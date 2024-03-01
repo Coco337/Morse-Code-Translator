@@ -22,6 +22,33 @@ def text_to_morse():
 
     print(morse_text)
 
+def morse_to_text():
+    morse_text = input("Morse: ")
+    text = ""
 
+    words = morse_text.split('/')
+    for word in words:
+        characters = word.split()
+        for char in characters:
+            text += get_key_from_value(char)
+        text += " "
 
-text_to_morse()
+    print(text)
+def get_key_from_value(keyvalue):
+    for key, value in morse_code_dict.items():
+        if value == keyvalue:
+            return key
+
+    return None
+
+while True:
+    option = input("What do you want to write: ")
+
+    if option == "text":
+        text_to_morse()
+    elif option == "morse":
+        morse_to_text()
+    elif option == "exit":
+        break
+    else:
+        print("try again")
